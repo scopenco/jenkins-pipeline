@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                git url:"https://github.com/balajich/SimpleTomcatWebApp.git", branch: "master"
+            }
+        }
+        stage('Build') {
+            steps {
+                sh "mvn clean install"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying to the hell...'
+            }
+        }
+    }
+}
